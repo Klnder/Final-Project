@@ -1,7 +1,7 @@
 import React from "react";
 import image from "./chris.png";
 import sound from "./responseSong.mp3";
-import "./prank.css";
+import "./rickrolled.css";
 import ReactAudioPlayer from "react-audio-player";
 
 export default function Prank() {

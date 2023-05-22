@@ -11,7 +11,7 @@ import NoPage from "./pages/NoPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Prank from "./pages/Prank";
+import Rickrolled from "./pages/Prank";
 
 function App() {
   const { loginWithRedirect, loginWithPopup, loading, user, isAuthenticated } = useAuth0();
@@ -69,7 +69,7 @@ function App() {
   // }
 
   if (isAuthenticated && widthScreen < 750) {
-    return <Prank />;
+    return <Rickrolled />;
   }
   if (isAuthenticated && widthScreen > 750) {
     getTrips();
