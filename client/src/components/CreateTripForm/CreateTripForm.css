@@ -1,0 +1,19 @@
+form {
+  width: 50%;
+}
+legend {
+  text-align: center;
+  margin-bottom: 5px;
+}
+p {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+input {
+  position: absolute;
+  right: 0;
+}
+label {
+  margin-bottom: 10px;
+}

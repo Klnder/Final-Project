@@ -1,0 +1,71 @@
+.trip-container {
+  width: 25%;
+  border: solid black 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 2fr 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "trip-name"
+    "trip-details"
+    "buttons";
+}
+
+.trip-name {
+  justify-self: center;
+  align-self: center;
+  grid-area: trip-name;
+}
+
+.trip-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "trip-dates";
+  grid-area: trip-details;
+}
+
+.trip-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "fromText startText"
+    "toText endText";
+  grid-area: trip-dates;
+}
+
+.fromText {
+  grid-area: fromText;
+}
+
+.startText {
+  grid-area: startText;
+}
+
+.endText {
+  grid-area: endText;
+}
+
+.toText {
+  grid-area: toText;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". .";
+  grid-area: buttons;
+}
+.details-button {
+  width: 100%;
+  height: 100%;
+}
