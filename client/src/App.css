@@ -44,4 +44,5 @@ main {
   align-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+  padding-bottom: 40px;
 }

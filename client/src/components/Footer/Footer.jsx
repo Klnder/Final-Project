@@ -4,7 +4,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer>
-      <p>Copyright Jérémy Merlin</p>
+      <h3>Copyright Jérémy Merlin</h3>
     </footer>
   );
 }

@@ -3,7 +3,14 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../Logout";
 
-export default function Header({ user }) {
+export default function Header({ user, trips }) {
+  const subMenuTripElement = trips.map((trip) => {
+    return (
+      <li>
+        <NavLink to={`/viewtrip/${trip._id}`}>{trip.name}</NavLink>
+      </li>
+    );
+  });
   return (
     <header>
       <div id="main-header">
@@ -20,21 +27,8 @@ export default function Header({ user }) {
               <NavLink to="/createtrip">Create Trip</NavLink>
             </li>
             <li className="has-sub">
-              <NavLink to="/viewtrip">View Trip</NavLink>
-              <ul>
-                <li>
-                  <a href="#">test</a>
-                </li>
-                <li>
-                  <a href="#">test</a>
-                </li>
-                <li>
-                  <a href="#">test</a>
-                </li>
-                <li>
-                  <a href="#">test</a>
-                </li>
-              </ul>
+              <NavLink to="#">View Trip</NavLink>
+              <ul>{subMenuTripElement}</ul>
             </li>
             <li>
               <NavLink to="/about">About</NavLink>

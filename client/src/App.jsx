@@ -10,11 +10,21 @@ import ViewTrip from "./pages/ViewTrip";
 import NoPage from "./pages/NoPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, loginWithPopup, loading, user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      return;
+    }
+
+    if (!isAuthenticated && !loading) {
+      loginWithPopup();
+    }
+  }, []);
 
   async function getTrips() {
     try {
@@ -36,26 +46,26 @@ function App() {
     }
   }
 
-  if (!isAuthenticated) {
-    return (
-      <div className="App">
-        <button onClick={() => loginWithRedirect()}> Login </button>
-      </div>
-    );
-  }
+  // if (!isAuthenticated) {
+  //   return (
+  //     <div className="App">
+  //       <button onClick={() => loginWithRedirect()}> Login </button>
+  //     </div>
+  //   );
+  // }
 
   if (isAuthenticated) {
     getTrips();
     return (
       <div className="App">
         <BrowserRouter>
-          <Header user={user} />
+          <Header user={user} trips={trips} />
           <main>
             <Routes>
               <Route path="/" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
               <Route path="/createtrip" element={<CreateTrip user={user} />} />
               <Route path="/modifytrip" element={<ModifyTrip />} />
-              <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
+              <Route path="/viewtrip/:tripid" element={<ViewTrip trips={trips} />} />
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NoPage />} />
             </Routes>
