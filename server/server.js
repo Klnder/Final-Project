@@ -26,12 +26,15 @@ const getTrip = require("./library/getTrip");
 const postTrip = require("./library/postTrip");
 const deleteTrip = require("./library/deleteTrip");
 const getTrips = require("./library/getTrips");
+const getTimeZone = require("./library/getTimezone");
 
 // Routes
 app.get("/trips/:owner", getTrips);
-app.get("/trip/:owner/:tripname", getTrip);
+app.get("/trip/:tripid", getTrip);
 app.post("/trip", postTrip);
 app.delete("/trip/:id", deleteTrip);
+
+app.get("/timezone/:cityfrom/:cityto", getTimeZone);
 
 // Connection
 const PORT = process.env.PORT || 5000;
