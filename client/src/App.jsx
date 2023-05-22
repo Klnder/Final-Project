@@ -11,19 +11,21 @@ import NoPage from "./pages/NoPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Prank from "./pages/Prank";
 
 function App() {
   const { loginWithRedirect, loginWithPopup, loading, user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
+  const [widthScreen, setWidthScreen] = useState("");
+  const [heightScreen, setHeightScreen] = useState("");
 
   useEffect(() => {
-    if (isAuthenticated) {
-      return;
-    }
-
     if (!isAuthenticated && !loading) {
       loginWithPopup();
     }
+  }, []);
+  useEffect(() => {
+    getWindowDimensions();
   }, []);
 
   async function getTrips() {
@@ -46,6 +48,18 @@ function App() {
     }
   }
 
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    console.log(width);
+    console.log(height);
+    setHeightScreen(height);
+    setWidthScreen(width);
+    return {
+      width,
+      height,
+    };
+  }
+  window.addEventListener("resize", getWindowDimensions);
   // if (!isAuthenticated) {
   //   return (
   //     <div className="App">
@@ -54,7 +68,10 @@ function App() {
   //   );
   // }
 
-  if (isAuthenticated) {
+  if (isAuthenticated && widthScreen < 750) {
+    return <Prank />;
+  }
+  if (isAuthenticated && widthScreen > 750) {
     getTrips();
     return (
       <div className="App">
