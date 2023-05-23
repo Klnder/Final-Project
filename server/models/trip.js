@@ -8,6 +8,7 @@ const tripSchema = new Schema({
   description: String,
   startDate: String,
   endDate: String,
+  duration: String,
   from: String,
   destination: String,
   transport: Object,
