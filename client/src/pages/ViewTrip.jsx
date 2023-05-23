@@ -14,7 +14,7 @@ export default function ViewTrip() {
       const API = `${process.env.REACT_APP_API_ADDRESS}/trip/${params.tripid}`;
       const res = await axios.get(API);
       setTrip(res.data);
-      //setShowComponents(true);
+      setShowComponents(true);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +27,12 @@ export default function ViewTrip() {
 
   return (
     <div className="viewtrip">
-      {!showComponents && <ReactLoading type="spin" color="black" height={1000} width={1000} />}
+      <p>Trip Name: {trip.name}</p>
+      {/* {!showComponents && (
+        <div className="animation">
+          <ReactLoading type="spin" color="blue" height={200} width={200} />
+        </div>
+      )} */}
       {showComponents && <TimeComponent trip={trip} />}
     </div>
   );
