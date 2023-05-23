@@ -11,19 +11,14 @@ import NoPage from "./pages/NoPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Rickrolled from "./pages/Prank";
+import Rickrolled from "./pages/Rickrolled";
 
 function App() {
-  const { loginWithRedirect, loginWithPopup, loading, user, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
   const [widthScreen, setWidthScreen] = useState("");
   const [heightScreen, setHeightScreen] = useState("");
 
-  useEffect(() => {
-    if (!isAuthenticated && !loading) {
-      loginWithPopup();
-    }
-  }, []);
   useEffect(() => {
     getWindowDimensions();
   }, []);
@@ -50,28 +45,22 @@ function App() {
 
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
-    console.log(width);
-    console.log(height);
     setHeightScreen(height);
     setWidthScreen(width);
-    return {
-      width,
-      height,
-    };
   }
   window.addEventListener("resize", getWindowDimensions);
-  // if (!isAuthenticated) {
-  //   return (
-  //     <div className="App">
-  //       <button onClick={() => loginWithRedirect()}> Login </button>
-  //     </div>
-  //   );
-  // }
+  if (!isAuthenticated) {
+    return (
+      <div className="App">
+        <button onClick={() => loginWithRedirect()}> Login </button>
+      </div>
+    );
+  }
 
-  if (isAuthenticated && widthScreen < 750) {
+  if (isAuthenticated && widthScreen < 1000) {
     return <Rickrolled />;
   }
-  if (isAuthenticated && widthScreen > 750) {
+  if (isAuthenticated && widthScreen > 1000) {
     getTrips();
     return (
       <div className="App">
@@ -82,7 +71,7 @@ function App() {
               <Route path="/" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
               <Route path="/createtrip" element={<CreateTrip user={user} />} />
               <Route path="/modifytrip" element={<ModifyTrip />} />
-              <Route path="/viewtrip/:tripid" element={<ViewTrip trips={trips} />} />
+              <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NoPage />} />
             </Routes>

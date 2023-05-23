@@ -1,12 +1,13 @@
 import React from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "../Logout";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Header({ user, trips }) {
+  const { logout } = useAuth0();
   const subMenuTripElement = trips.map((trip) => {
     return (
-      <li>
+      <li key={trip._id}>
         <NavLink to={`/viewtrip/${trip._id}`}>{trip.name}</NavLink>
       </li>
     );
@@ -27,14 +28,14 @@ export default function Header({ user, trips }) {
               <NavLink to="/createtrip">Create Trip</NavLink>
             </li>
             <li className="has-sub">
-              <NavLink to="#">View Trip</NavLink>
+              <a href="#">View Trip</a>
               <ul>{subMenuTripElement}</ul>
             </li>
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
           </ul>
-          <LogoutButton />
+          <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>
         </div>
       </div>
     </header>

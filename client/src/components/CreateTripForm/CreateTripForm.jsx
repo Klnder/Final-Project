@@ -78,9 +78,9 @@ export default function CreateTripForm({ user }) {
           <input type="text" name="transportNumber" id="transportNumber" onChange={handleChange} value={form.transportNumber} />
         </p>
         <p>
-          {" "}
           <input type="submit" />
         </p>
+        <br />
       </fieldset>
     </form>
   );

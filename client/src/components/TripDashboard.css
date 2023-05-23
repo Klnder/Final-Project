@@ -1,6 +1,7 @@
 .trip-container {
+  background-color: #38342e;
+  color: white;
   width: 25%;
-  border: solid black 2px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 2fr 0.5fr;
@@ -14,7 +15,6 @@
 
 .trip-name {
   justify-self: center;
-  align-self: center;
   grid-area: trip-name;
 }
 

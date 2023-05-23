@@ -1,6 +1,6 @@
 #main-header {
   width: 100%;
-  background-color: blue;
+  background-color: #0a0150;
   font-size: 2rem;
   color: white;
   position: relative;
@@ -16,7 +16,7 @@ h1 {
   height: 100vh;
   position: fixed;
   top: 0;
-  background-color: blue;
+  background-color: #0a0150;
   color: white;
 }
 h2 {
