@@ -13,11 +13,23 @@ export default function CreateTripForm({ user }) {
     transportNumber: "",
   });
 
+  //manipulate current date to put it as the minimum in the form
+  const oneDay = 24 * 60 * 60 * 1000;
+  const currentDate = new Date();
+  const yyyy = currentDate.getFullYear();
+  let mm = currentDate.getMonth() + 1; // Months start at 0!
+  let dd = currentDate.getDate();
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+  const formattedToday = yyyy + "-" + mm + "-" + dd;
+
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
   async function postTrip(event) {
     event.preventDefault();
+    const lengthTrip = Math.round(Math.abs((new Date(form.endDate) - new Date(form.startDate)) / oneDay));
+    console.log(lengthTrip);
     const newTrip = {
       name: form.name,
       owner: user.nickname,
@@ -25,12 +37,12 @@ export default function CreateTripForm({ user }) {
       destination: form.destination,
       startDate: form.startDate,
       endDate: form.endDate,
+      duration: lengthTrip,
       transport: {
         type: form.transportType,
         number: form.transportNumber,
       },
     };
-    console.log(newTrip);
     try {
       const API = `${process.env.REACT_APP_API_ADDRESS}/trip`;
       await axios.post(API, newTrip);
@@ -67,7 +79,7 @@ export default function CreateTripForm({ user }) {
         </p>
         <p>
           <label htmlFor="startDate">Start date :</label>
-          <input type="date" name="startDate" id="startDate" onChange={handleChange} value={form.startDate} />
+          <input type="date" name="startDate" id="startDate" min={formattedToday} onChange={handleChange} value={form.startDate} />
         </p>
         <p>
           <label htmlFor="endDate">End Date :</label>

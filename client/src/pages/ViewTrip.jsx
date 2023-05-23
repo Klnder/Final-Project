@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TimeComponent from "../components/TimeComponent";
+import WeatherComponent from "../components/WeatherComponent";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import "./ViewTrip.css";
 
 export default function ViewTrip() {
   const params = useParams();
@@ -27,13 +29,19 @@ export default function ViewTrip() {
 
   return (
     <div className="viewtrip">
-      <p>Trip Name: {trip.name}</p>
-      {/* {!showComponents && (
+      <h3>Trip Name: {trip.name}</h3>
+      <h3>
+        From {trip.startDate} to {trip.endDate}
+      </h3>
+      {!showComponents && (
         <div className="animation">
           <ReactLoading type="spin" color="blue" height={200} width={200} />
         </div>
-      )} */}
-      {showComponents && <TimeComponent trip={trip} />}
+      )}
+      <div className="component-container">
+        {showComponents && <TimeComponent trip={trip} />}
+        {showComponents && <WeatherComponent trip={trip} />}
+      </div>
     </div>
   );
 }

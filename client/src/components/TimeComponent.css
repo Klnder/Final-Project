@@ -1,0 +1,60 @@
+.time-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "inDays"
+    "fromInfo"
+    "toInfo";
+}
+
+.inDays {
+  justify-self: center;
+  grid-area: inDays;
+}
+
+.fromInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "fromCity fromTime";
+  grid-area: fromInfo;
+}
+
+.fromCity {
+  justify-self: center;
+  align-self: center;
+  grid-area: fromCity;
+}
+
+.fromTime {
+  justify-self: center;
+  align-self: center;
+  grid-area: fromTime;
+}
+
+.toInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "toCity toTime";
+  grid-area: toInfo;
+}
+
+.toCity {
+  justify-self: center;
+  align-self: center;
+  grid-area: toCity;
+}
+
+.toTime {
+  justify-self: center;
+  align-self: center;
+  grid-area: toTime;
+}

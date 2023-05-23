@@ -1,0 +1,23 @@
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginTitle {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #f8ff00 0%, #3ad59f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.loginButton {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: tomato;
+  padding: 10px;
+  background: linear-gradient(to right, #f8ff00 0%, #3ad59f 100%);
+}

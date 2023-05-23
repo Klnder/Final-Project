@@ -12,6 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Rickrolled from "./pages/Rickrolled";
+import Login from "./pages/Login";
 
 function App() {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
@@ -51,8 +52,8 @@ function App() {
   window.addEventListener("resize", getWindowDimensions);
   if (!isAuthenticated) {
     return (
-      <div className="App">
-        <button onClick={() => loginWithRedirect()}> Login </button>
+      <div className="login-container">
+        <Login />
       </div>
     );
   }
@@ -68,7 +69,8 @@ function App() {
           <Header user={user} trips={trips} />
           <main>
             <Routes>
-              <Route path="/" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
+              <Route path="/" element="" />
+              <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
               <Route path="/createtrip" element={<CreateTrip user={user} />} />
               <Route path="/modifytrip" element={<ModifyTrip />} />
               <Route path="/viewtrip/:tripid" element={<ViewTrip />} />

@@ -18,11 +18,11 @@ export default function Header({ user, trips }) {
         <h1>Welcome to trip planner {user.nickname}</h1>
       </div>
       <div id="main-menu">
-        <h2>Menu</h2>
+        <h2 className="menu">Menu</h2>
         <div id="menu-list" className="navigation">
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/home">Home</NavLink>
             </li>
             <li>
               <NavLink to="/createtrip">Create Trip</NavLink>
@@ -34,8 +34,12 @@ export default function Header({ user, trips }) {
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
+            <li>
+              <NavLink to="/" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                Log Out
+              </NavLink>
+            </li>
           </ul>
-          <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>
         </div>
       </div>
     </header>

@@ -8,7 +8,6 @@ export default function TripDashboard({ trip, deleteTrip }) {
 
   const currentDate = new Date();
   const oneDay = 24 * 60 * 60 * 1000;
-
   const inDays = Math.round(Math.abs((startDate - currentDate) / oneDay));
 
   return (

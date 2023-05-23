@@ -1,6 +1,7 @@
 .trip-container {
   background-color: #38342e;
   color: white;
+  padding: 3px;
   width: 25%;
   display: grid;
   grid-template-columns: 1fr;
@@ -14,6 +15,8 @@
 }
 
 .trip-name {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   justify-self: center;
   grid-area: trip-name;
 }
