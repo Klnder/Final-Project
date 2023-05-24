@@ -44,6 +44,7 @@ export default function WeatherComponent({ trip }) {
     <article className="trip-component">
       {showElement && (
         <table className="weather-table">
+          <caption>Weather In: {trip.destination}</caption>
           <thead>
             <tr>
               <th>Date</th>
