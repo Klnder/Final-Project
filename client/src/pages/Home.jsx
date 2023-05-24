@@ -9,7 +9,7 @@ export default function Home({ trips, deleteTrip }) {
   return (
     <div id="home-container">
       <div className="title">
-        <h2>You have {trips.length} trips:</h2>
+        <h2>You have {trips.length} trips incoming:</h2>
       </div>
       <div className="trips-container">{listTripsElement}</div>
     </div>

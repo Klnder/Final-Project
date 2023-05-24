@@ -16,7 +16,7 @@ import Login from "./pages/Login";
 import ReactLoading from "react-loading";
 
 function App() {
-  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
   const [widthScreen, setWidthScreen] = useState("");
   const [heightScreen, setHeightScreen] = useState("");
@@ -51,6 +51,11 @@ function App() {
     setWidthScreen(width);
   }
   window.addEventListener("resize", getWindowDimensions);
+
+  if (widthScreen < 1000 || heightScreen < 1000) {
+    return <Rickrolled />;
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="login-container">
@@ -59,10 +64,7 @@ function App() {
     );
   }
 
-  if (isAuthenticated && widthScreen < 1000) {
-    return <Rickrolled />;
-  }
-  if (isAuthenticated && widthScreen > 1000) {
+  if (isAuthenticated) {
     getTrips();
     return (
       <div className="App">
