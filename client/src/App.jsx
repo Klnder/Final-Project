@@ -22,8 +22,10 @@ function App() {
   const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
-    getWindowDimensions();
-  }, []);
+    setInterval(() => {
+      getWindowDimensions();
+    }, 2000);
+  });
 
   async function getTrips() {
     try {
@@ -51,9 +53,9 @@ function App() {
     setHeightScreen(height);
     setWidthScreen(width);
   }
-  window.addEventListener("resize", getWindowDimensions);
+  //window.addEventListener("resize", getWindowDimensions);
 
-  if (widthScreen < 1000 || heightScreen < 750) {
+  if (widthScreen < 1100 || heightScreen < 750) {
     return <Rickrolled />;
   }
 

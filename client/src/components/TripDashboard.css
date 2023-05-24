@@ -3,7 +3,8 @@
   background-color: #38342e;
   color: white;
   padding: 5px;
-  width: 25%;
+  max-width: 20%;
+  min-width: 300px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 2fr 0.5fr;
