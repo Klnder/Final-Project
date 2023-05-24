@@ -2,8 +2,8 @@ require("dotenv").config();
 const axios = require("axios");
 
 async function getTimezone(request, response) {
-  try {
-    if (request.params.cityfrom && request.params.cityto) {
+  if (request.params.cityfrom && request.params.cityto) {
+    try {
       let reqInstance = axios.create({
         headers: {
           "X-Api-Key": `${process.env.SUPER_API_KEY}`,
@@ -20,11 +20,11 @@ async function getTimezone(request, response) {
         timezoneTo: resTo.data.timezone,
       };
       response.json(res);
-    } else {
-      response.status(500).json("Please enter a city name");
+    } catch (error) {
+      response.status(500).json("cannot find timezone");
     }
-  } catch (error) {
-    response.status(500).json("cannot find timezone");
+  } else {
+    response.status(500).json("Please enter a city from and a city to");
   }
 }
 
