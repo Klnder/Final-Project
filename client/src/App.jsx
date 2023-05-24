@@ -13,6 +13,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Rickrolled from "./pages/Rickrolled";
 import Login from "./pages/Login";
+import ReactLoading from "react-loading";
 
 function App() {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
@@ -65,21 +66,29 @@ function App() {
     getTrips();
     return (
       <div className="App">
-        <BrowserRouter>
-          <Header user={user} trips={trips} />
-          <main>
-            <Routes>
-              <Route path="/" element="" />
-              <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
-              <Route path="/createtrip" element={<CreateTrip user={user} />} />
-              <Route path="/modifytrip" element={<ModifyTrip />} />
-              <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NoPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
+        {trips.length === 0 && (
+          <div className="animation-dashboard">
+            <ReactLoading type="spin" color="blue" height={200} width={200} />
+            <h2>Loading your dashboard</h2>
+          </div>
+        )}
+        {trips.length !== 0 && (
+          <BrowserRouter>
+            <Header user={user} trips={trips} />
+            <main>
+              <Routes>
+                <Route path="/" element="" />
+                <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
+                <Route path="/createtrip" element={<CreateTrip user={user} />} />
+                <Route path="/modifytrip" element={<ModifyTrip />} />
+                <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NoPage />} />
+              </Routes>
+            </main>
+            <Footer />
+          </BrowserRouter>
+        )}
       </div>
     );
   }
