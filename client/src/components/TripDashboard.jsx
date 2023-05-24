@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TripDashboard.css";
 import { NavLink } from "react-router-dom";
 
 export default function TripDashboard({ trip, deleteTrip }) {
-  const [startDate, setstartDate] = useState(new Date(trip.startDate));
-  const [endDate, setendDate] = useState(new Date(trip.endDate));
-
+  const startDate = new Date(trip.startDate);
+  const endDate = new Date(trip.endDate);
   const currentDate = new Date();
   const oneDay = 24 * 60 * 60 * 1000;
   const inDays = Math.round(Math.abs((startDate - currentDate) / oneDay));

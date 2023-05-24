@@ -15,7 +15,7 @@ export default function Header({ user, trips }) {
   return (
     <header>
       <div id="main-header">
-        <h1>Welcome to trip planner {user.nickname}</h1>
+        <h1>Welcome to trip planner : {user.nickname}</h1>
       </div>
       <div id="main-menu">
         <h2 className="menu">Menu</h2>

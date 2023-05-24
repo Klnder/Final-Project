@@ -5,7 +5,6 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import CreateTrip from "./pages/CreateTrip";
 import About from "./pages/About";
-import ModifyTrip from "./pages/ModifyTrip";
 import ViewTrip from "./pages/ViewTrip";
 import NoPage from "./pages/NoPage";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -84,7 +83,6 @@ function App() {
                 <Route path="/" element="" />
                 <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
                 <Route path="/createtrip" element={<CreateTrip user={user} />} />
-                <Route path="/modifytrip" element={<ModifyTrip />} />
                 <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
                 <Route path="/about" element={<About />} />
                 <Route path="*" element={<NoPage />} />

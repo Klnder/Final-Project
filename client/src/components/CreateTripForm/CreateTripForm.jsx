@@ -67,27 +67,42 @@ export default function CreateTripForm({ user }) {
         <legend>Create a new Trip</legend>
         <p>
           <label htmlFor="name">Name :</label>
-          <input type="text" name="name" id="name" onChange={handleChange} value={form.name} />
+          <input type="text" name="name" id="name" onChange={handleChange} value={form.name} placeholder="exciting name of your trip" />
         </p>
         <p>
           <label htmlFor="from">From :</label>
-          <input type="text" name="from" id="from" onChange={handleChange} value={form.from} />
+          <input type="text" name="from" id="from" onChange={handleChange} value={form.from} placeholder="city departure" />
         </p>
         <p>
           <label htmlFor="destination">Destination :</label>
-          <input type="text" name="destination" id="tdestination" onChange={handleChange} value={form.destination} />
+          <input type="text" name="destination" id="tdestination" onChange={handleChange} value={form.destination} placeholder="city arrival" />
         </p>
         <p>
           <label htmlFor="startDate">Start date :</label>
-          <input type="date" name="startDate" id="startDate" min={formattedToday} onChange={handleChange} value={form.startDate} />
+          <input
+            type="date"
+            name="startDate"
+            id="startDate"
+            className="date-input"
+            min={formattedToday}
+            onChange={handleChange}
+            value={form.startDate}
+          />
         </p>
         <p>
           <label htmlFor="endDate">End Date :</label>
-          <input type="date" name="endDate" id="endDate" min={form.startDate} onChange={handleChange} value={form.endDate} />
+          <input type="date" name="endDate" id="endDate" className="date-input" min={form.startDate} onChange={handleChange} value={form.endDate} />
         </p>
         <p>
           <label htmlFor="transportNumber">Flight number :</label>
-          <input type="text" name="transportNumber" id="transportNumber" onChange={handleChange} value={form.transportNumber} />
+          <input
+            type="text"
+            name="transportNumber"
+            id="transportNumber"
+            onChange={handleChange}
+            value={form.transportNumber}
+            placeholder="your flight number to track you"
+          />
         </p>
         <p>
           <input type="submit" />

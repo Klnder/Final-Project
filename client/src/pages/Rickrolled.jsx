@@ -7,7 +7,7 @@ import ReactAudioPlayer from "react-audio-player";
 export default function Prank() {
   return (
     <div className="prankcontainer">
-      <img src={image} className="prankimg" />
+      <img src={image} className="prankimg" alt="get rickrolled" />
       <ReactAudioPlayer src={sound} autoPlay />
     </div>
   );

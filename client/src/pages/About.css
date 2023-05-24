@@ -1,0 +1,38 @@
+.about-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.about-list {
+  width: 60%;
+  border-radius: 10px;
+  background-color: #38342e;
+  color: white;
+  padding: 10px;
+
+  list-style: square;
+}
+.about-list > li {
+  padding: 3px;
+  margin-left: 1rem;
+}
+.about-title {
+  color: #38342e;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.cocktail-title {
+  color: white;
+  width: 60%;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: left;
+}

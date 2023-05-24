@@ -4,7 +4,6 @@ import DailyWeather from "./DailyWeather";
 import "./WeatherComponent.css";
 
 export default function WeatherComponent({ trip }) {
-  const [forecastTrip, setForecastTrip] = useState("");
   const [showElement, setShowElement] = useState(false);
   const [weatherTable, setWeatherTable] = useState("");
 
@@ -16,7 +15,7 @@ export default function WeatherComponent({ trip }) {
     let forecastArray = [];
 
     try {
-      var date = new Date(trip.startDate);
+      let date = new Date(trip.startDate);
       for (let i = 0; i < 7; i++) {
         const yyyy = date.getFullYear();
         let mm = date.getMonth() + 1; // Months start at 0!
@@ -30,7 +29,6 @@ export default function WeatherComponent({ trip }) {
 
         date.setDate(date.getDate() + 1);
       }
-      setForecastTrip(forecastArray);
 
       let tableForecast = forecastArray.map((data, index) => {
         return <DailyWeather data={data} key={index} />;

@@ -1,7 +1,8 @@
 form {
   width: 50%;
   background-color: #38342e;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px;
   padding-bottom: 10px;
 }
 legend {
@@ -16,6 +17,10 @@ p {
 input {
   position: absolute;
   right: 0;
+  width: 40%;
+}
+.date-input {
+  width: 40.5%;
 }
 label {
   margin-bottom: 10px;
