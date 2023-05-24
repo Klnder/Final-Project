@@ -20,6 +20,7 @@ function App() {
   const [trips, setTrips] = useState([]);
   const [widthScreen, setWidthScreen] = useState("");
   const [heightScreen, setHeightScreen] = useState("");
+  const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
     getWindowDimensions();
@@ -30,6 +31,7 @@ function App() {
       const API = `${process.env.REACT_APP_API_ADDRESS}/trips/${user.nickname}`;
       const res = await axios.get(API);
       setTrips(res.data);
+      setShowDashboard(true);
     } catch (error) {
       console.log(error);
     }
@@ -68,13 +70,13 @@ function App() {
     getTrips();
     return (
       <div className="App">
-        {trips.length === 0 && (
+        {!showDashboard && (
           <div className="animation-dashboard">
             <ReactLoading type="spin" color="blue" height={200} width={200} />
             <h2>Loading your dashboard</h2>
           </div>
         )}
-        {trips.length !== 0 && (
+        {showDashboard && (
           <BrowserRouter>
             <Header user={user} trips={trips} />
             <main>
