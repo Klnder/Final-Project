@@ -52,7 +52,7 @@ function App() {
   }
   window.addEventListener("resize", getWindowDimensions);
 
-  if (widthScreen < 1000 || heightScreen < 800) {
+  if (widthScreen < 1000 || heightScreen < 750) {
     return <Rickrolled />;
   }
 
