@@ -17,8 +17,8 @@ import ReactLoading from "react-loading";
 function App() {
   const { user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
-  const [widthScreen, setWidthScreen] = useState("");
-  const [heightScreen, setHeightScreen] = useState("");
+  const [widthScreen, setWidthScreen] = useState(10000);
+  const [heightScreen, setHeightScreen] = useState(10000);
   const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
@@ -55,46 +55,50 @@ function App() {
   }
   //window.addEventListener("resize", getWindowDimensions);
 
-  if (widthScreen < 1100 || heightScreen < 750) {
-    return <Rickrolled />;
-  }
-
   if (!isAuthenticated) {
-    return (
-      <div className="login-container">
-        <Login />
-      </div>
-    );
+    if (widthScreen < 1100 || heightScreen < 750) {
+      return <Rickrolled />;
+    } else {
+      return (
+        <div className="login-container">
+          <Login />
+        </div>
+      );
+    }
   }
 
   if (isAuthenticated) {
     getTrips();
-    return (
-      <div className="App">
-        {!showDashboard && (
-          <div className="animation-dashboard">
-            <ReactLoading type="spin" color="blue" height={200} width={200} />
-            <h2>Loading your dashboard</h2>
-          </div>
-        )}
-        {showDashboard && (
-          <BrowserRouter>
-            <Header user={user} trips={trips} />
-            <main>
-              <Routes>
-                <Route path="/" element="" />
-                <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
-                <Route path="/createtrip" element={<CreateTrip user={user} />} />
-                <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
-                <Route path="/about" element={<About />} />
-                <Route path="*" element={<NoPage />} />
-              </Routes>
-            </main>
-            <Footer />
-          </BrowserRouter>
-        )}
-      </div>
-    );
+    if (widthScreen < 1100 || heightScreen < 750) {
+      return <Rickrolled />;
+    } else {
+      return (
+        <div className="App">
+          {!showDashboard && (
+            <div className="animation-dashboard">
+              <ReactLoading type="spin" color="blue" height={200} width={200} />
+              <h2>Loading your dashboard</h2>
+            </div>
+          )}
+          {showDashboard && (
+            <BrowserRouter>
+              <Header user={user} trips={trips} />
+              <main>
+                <Routes>
+                  <Route path="/" element="" />
+                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
+                  <Route path="/createtrip" element={<CreateTrip user={user} />} />
+                  <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="*" element={<NoPage />} />
+                </Routes>
+              </main>
+              <Footer />
+            </BrowserRouter>
+          )}
+        </div>
+      );
+    }
   }
 }
 
