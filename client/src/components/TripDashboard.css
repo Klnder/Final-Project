@@ -17,10 +17,24 @@
 }
 
 .trip-name {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  justify-self: center;
   grid-area: trip-name;
+
+  display: grid;
+  grid-template-columns: 2.8fr 1.2fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "title edit";
+}
+
+.title {
+  grid-area: title;
+}
+
+.edit {
+  grid-area: edit;
+  justify-self: center;
+  align-self: center;
 }
 
 .trip-details {

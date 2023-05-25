@@ -12,8 +12,12 @@ export default function TripDashboard({ trip, deleteTrip, handleModal }) {
   return (
     <article className="trip-container">
       <div className="trip-name">
-        <h2>Name: {trip.name}</h2>
-        <button onClick={() => handleModal(trip)}>Edit</button>
+        <div class="title">
+          <h2>Name: {trip.name}</h2>
+        </div>
+        <div class="edit">
+          <button onClick={() => handleModal(trip)}>Edit</button>
+        </div>
       </div>
       <div className="trip-details">
         <div className="trip-dates">
