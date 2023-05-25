@@ -15,6 +15,7 @@ const deleteTrip = require("./library/deleteTrip");
 const getTrips = require("./library/getTrips");
 const getTimeZone = require("./library/getTimezone");
 const getWeatherForecast = require("./library/getWeatherForecast");
+const modifyTrip = require("./library/modifyTrip");
 
 // Routes
 app.get("/trips/:owner", getTrips);
@@ -23,6 +24,7 @@ app.get("/timezone/:cityfrom/:cityto", getTimeZone);
 app.get("/weatherforecast", getWeatherForecast);
 app.post("/trip", postTrip);
 app.delete("/trip/:id", deleteTrip);
+app.put("/trip/:id", modifyTrip);
 
 // Connection
 const PORT = process.env.PORT || 5000;
