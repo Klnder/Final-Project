@@ -2,7 +2,7 @@ import React from "react";
 import "./TripDashboard.css";
 import { NavLink } from "react-router-dom";
 
-export default function TripDashboard({ trip, deleteTrip }) {
+export default function TripDashboard({ trip, deleteTrip, handleModal }) {
   const startDate = new Date(trip.startDate);
   const endDate = new Date(trip.endDate);
   const currentDate = new Date();
@@ -13,6 +13,7 @@ export default function TripDashboard({ trip, deleteTrip }) {
     <article className="trip-container">
       <div className="trip-name">
         <h2>Name: {trip.name}</h2>
+        <button onClick={() => handleModal(trip)}>Edit</button>
       </div>
       <div className="trip-details">
         <div className="trip-dates">

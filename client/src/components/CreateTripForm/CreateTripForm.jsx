@@ -29,7 +29,6 @@ export default function CreateTripForm({ user }) {
   async function postTrip(event) {
     event.preventDefault();
     const lengthTrip = Math.round(Math.abs((new Date(form.endDate) - new Date(form.startDate)) / oneDay));
-    console.log(lengthTrip);
     const newTrip = {
       name: form.name,
       owner: user.nickname,

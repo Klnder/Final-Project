@@ -15,7 +15,6 @@ export default function About() {
       <h2 className="about-title">Feature ideas to develop:</h2>
       <ul className="about-list">
         <li>Being able to see only trip incoming and develop a archive page</li>
-        <li>Possibility to modify a trip</li>
         <li>Add transport informations (flight, bus, train...)</li>
         <li>Use a CSS Framework to help with responsiveness</li>
       </ul>

@@ -26,8 +26,11 @@ function App() {
       getWindowDimensions();
     }, 2000);
   });
+  useEffect(() => {
+    getTrips(user);
+  }, [isAuthenticated]);
 
-  async function getTrips() {
+  async function getTrips(user) {
     try {
       const API = `${process.env.REACT_APP_API_ADDRESS}/trips/${user.nickname}`;
       const res = await axios.get(API);
@@ -68,7 +71,6 @@ function App() {
   }
 
   if (isAuthenticated) {
-    getTrips();
     if (widthScreen < 1100 || heightScreen < 750) {
       return <Rickrolled />;
     } else {
@@ -86,7 +88,7 @@ function App() {
               <main>
                 <Routes>
                   <Route path="/" element="" />
-                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} />} />
+                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} user={user} getTrips={getTrips} />} />
                   <Route path="/createtrip" element={<CreateTrip user={user} />} />
                   <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
                   <Route path="/about" element={<About />} />
