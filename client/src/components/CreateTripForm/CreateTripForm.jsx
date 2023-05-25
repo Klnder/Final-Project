@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./CreateTripForm.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
-export default function CreateTripForm({ user }) {
+export default function CreateTripForm({ getTrips }) {
+  const { user } = useAuth0();
   const [form, setForm] = useState({
     name: "",
     from: "",
@@ -58,6 +60,7 @@ export default function CreateTripForm({ user }) {
       transportType: "Flight",
       transportNumber: "",
     });
+    getTrips(user);
   }
 
   return (

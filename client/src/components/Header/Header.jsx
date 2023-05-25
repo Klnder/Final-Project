@@ -3,8 +3,8 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export default function Header({ user, trips }) {
-  const { logout } = useAuth0();
+export default function Header({ trips }) {
+  const { logout, user } = useAuth0();
   const subMenuTripElement = trips.map((trip) => {
     return (
       <li key={trip._id}>

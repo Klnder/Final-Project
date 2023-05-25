@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TripDashboard from "../components/TripDashboard";
 import EditModal from "../components/EditModal";
 
-export default function Home({ trips, deleteTrip, user, getTrips }) {
+export default function Home({ trips, deleteTrip, getTrips }) {
   const [showModal, setShowModal] = useState(false);
   const [modalTrip, setModalTrip] = useState();
 
@@ -21,7 +21,7 @@ export default function Home({ trips, deleteTrip, user, getTrips }) {
         {trips.length > 0 && <h2 className="home-title">That's exciting !!!</h2>}
       </div>
       <div className="trips-container">{listTripsElement}</div>
-      <div>{showModal && <EditModal trip={modalTrip} handleModal={handleModal} user={user} getTrips={getTrips} />}</div>
+      <div>{showModal && <EditModal trip={modalTrip} handleModal={handleModal} getTrips={getTrips} />}</div>
     </div>
   );
 }

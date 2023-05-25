@@ -1,10 +1,10 @@
 import React from "react";
 import CreateTripForm from "../components/CreateTripForm/CreateTripForm";
 
-export default function CreateTrip({ user }) {
+export default function CreateTrip({ getTrips }) {
   return (
     <div id="createTrip">
-      <CreateTripForm user={user} />
+      <CreateTripForm getTrips={getTrips} />
     </div>
   );
 }

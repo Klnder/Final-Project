@@ -45,7 +45,7 @@ function App() {
     try {
       const API = `${process.env.REACT_APP_API_ADDRESS}/trip/${id}`;
       await axios.delete(API);
-      getTrips();
+      getTrips(user);
     } catch (error) {
       console.log(error);
     }
@@ -88,8 +88,8 @@ function App() {
               <main>
                 <Routes>
                   <Route path="/" element="" />
-                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} user={user} getTrips={getTrips} />} />
-                  <Route path="/createtrip" element={<CreateTrip user={user} />} />
+                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} getTrips={getTrips} />} />
+                  <Route path="/createtrip" element={<CreateTrip getTrips={getTrips} />} />
                   <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
                   <Route path="/about" element={<About />} />
                   <Route path="*" element={<NoPage />} />

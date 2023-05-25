@@ -1,7 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function EditModal({ trip, handleModal, user, getTrips }) {
+export default function EditModal({ trip, handleModal, getTrips }) {
+  const { user } = useAuth0();
   const [form, setForm] = useState({
     name: trip.name,
     from: trip.from,

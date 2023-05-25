@@ -14,5 +14,6 @@ th {
 }
 
 caption {
-  padding-bottom: 2px;
+  padding-bottom: 4px;
+  text-decoration: underline;
 }
