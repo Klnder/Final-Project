@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import "./CreateTripForm.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { toast } from "react-toastify";
 
 export default function CreateTripForm({ getTrips }) {
   const { user } = useAuth0();
@@ -49,6 +50,7 @@ export default function CreateTripForm({ getTrips }) {
       await axios.post(API, newTrip);
     } catch (error) {
       console.log(error);
+      toast.error("Failed to add Trip :(");
     }
 
     setForm({
@@ -60,6 +62,7 @@ export default function CreateTripForm({ getTrips }) {
       transportType: "Flight",
       transportNumber: "",
     });
+    toast.success("New trip added !");
     getTrips(user);
   }
 

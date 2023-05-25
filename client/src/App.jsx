@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import Rickrolled from "./pages/Rickrolled";
 import Login from "./pages/Login";
 import ReactLoading from "react-loading";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -49,6 +51,7 @@ function App() {
     } catch (error) {
       console.log(error);
     }
+    toast.info("Trip deleted !");
   }
 
   function getWindowDimensions() {
@@ -86,6 +89,19 @@ function App() {
             <BrowserRouter>
               <Header user={user} trips={trips} />
               <main>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable={false}
+                  pauseOnHover
+                  theme="colored"
+                  limit={3}
+                />
                 <Routes>
                   <Route path="/" element="" />
                   <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} getTrips={getTrips} />} />
