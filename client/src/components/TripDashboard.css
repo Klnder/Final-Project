@@ -61,18 +61,24 @@
 
 .fromText {
   grid-area: fromText;
+  align-self: center;
 }
 
 .startText {
   grid-area: startText;
+  justify-self: center;
+  align-self: center;
 }
 
 .endText {
   grid-area: endText;
+  justify-self: center;
+  align-self: center;
 }
 
 .toText {
   grid-area: toText;
+  align-self: center;
 }
 
 .buttons {

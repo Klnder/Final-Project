@@ -46,10 +46,13 @@ export default function ViewTrip() {
       setEndDate(formattedDate);
       getTimezone(res.data);
       getForecast(res.data);
+      setShowTimezone(true);
+      setShowForecast(true);
     } catch (error) {
       console.log(error);
     }
   }
+
   async function getForecast(tripData) {
     let forecastArray = [];
     try {
@@ -70,7 +73,6 @@ export default function ViewTrip() {
         return <DailyWeather data={data} key={index} />;
       });
       setWeatherForecast(tableForecast);
-      setShowForecast(true);
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +84,6 @@ export default function ViewTrip() {
       let res = await axios.get(API);
       setFromTimezone(res.data.timezoneFrom);
       setToTimezone(res.data.timezoneTo);
-      setShowTimezone(true);
     } catch (error) {
       console.log(error);
     }

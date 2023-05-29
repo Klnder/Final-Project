@@ -29,7 +29,7 @@ function App() {
     }, 2000);
   });
   useEffect(() => {
-    getTrips(user);
+    if (isAuthenticated) getTrips(user);
   }, [isAuthenticated]);
 
   async function getTrips(user) {

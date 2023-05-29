@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import "./CreateTripForm.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
+import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { indigo } from "@mui/material/colors";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 export default function CreateTripForm({ getTrips }) {
   const { user } = useAuth0();
@@ -15,6 +19,13 @@ export default function CreateTripForm({ getTrips }) {
     transportType: "Flight",
     transportNumber: "",
   });
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(indigo[500]),
+    backgroundColor: indigo[500],
+    "&:hover": {
+      backgroundColor: indigo[700],
+    },
+  }));
 
   //manipulate current date to put it as the minimum in the form
   const oneDay = 24 * 60 * 60 * 1000;
@@ -109,10 +120,9 @@ export default function CreateTripForm({ getTrips }) {
             placeholder="your flight number to track you"
           />
         </p>
-        <p>
-          <input type="submit" />
-        </p>
-        <br />
+        <ColorButton type="submit" variant="outlined" endIcon={<SendRoundedIcon />}>
+          Submit
+        </ColorButton>
       </fieldset>
     </form>
   );
