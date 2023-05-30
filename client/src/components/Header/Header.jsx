@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { deepPurple } from "@mui/material/colors";
 
 export default function Header({ trips }) {
   const { logout, user } = useAuth0();
@@ -14,7 +15,7 @@ export default function Header({ trips }) {
   });
   return (
     <header>
-      <div id="main-header">
+      <div id="main-header" sx={{ bgcolor: deepPurple[500] }}>
         <h1>Welcome to trip planner : {user.nickname}</h1>
       </div>
       <div id="main-menu">

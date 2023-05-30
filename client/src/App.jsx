@@ -15,8 +15,35 @@ import Login from "./pages/Login";
 import ReactLoading from "react-loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-function App() {
+export default function App() {
+  let theme = createTheme({
+    palette: {
+      mode: "light",
+      primary: {
+        main: "#1a237e",
+        light: "#0a1fea",
+      },
+      secondary: {
+        main: "#f50057",
+      },
+      background: {
+        default: "#e1d4b7",
+        paper: "#38342e",
+      },
+      text: {
+        primary: "rgba(255,255,255,0.87)",
+      },
+    },
+    typography: {
+      fontSize: 16,
+      h1: {
+        fontSize: "2rem",
+      },
+    },
+  });
   const { user, isAuthenticated } = useAuth0();
   const [trips, setTrips] = useState([]);
   const [widthScreen, setWidthScreen] = useState(10000);
@@ -87,31 +114,33 @@ function App() {
           )}
           {showDashboard && (
             <BrowserRouter>
-              <Header user={user} trips={trips} />
-              <main>
-                <ToastContainer
-                  position="top-center"
-                  autoClose={3000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable={false}
-                  pauseOnHover
-                  theme="colored"
-                  limit={3}
-                />
-                <Routes>
-                  <Route path="/" element="" />
-                  <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} getTrips={getTrips} />} />
-                  <Route path="/createtrip" element={<CreateTrip getTrips={getTrips} />} />
-                  <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="*" element={<NoPage />} />
-                </Routes>
-              </main>
-              <Footer />
+              <ThemeProvider theme={theme}>
+                <Header user={user} trips={trips} />
+                <main>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable={false}
+                    pauseOnHover
+                    theme="colored"
+                    limit={3}
+                  />
+                  <Routes>
+                    <Route path="/" element="" />
+                    <Route path="/home" element={<Home trips={trips} deleteTrip={deleteTrip} getTrips={getTrips} />} />
+                    <Route path="/createtrip" element={<CreateTrip getTrips={getTrips} />} />
+                    <Route path="/viewtrip/:tripid" element={<ViewTrip />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="*" element={<NoPage />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </ThemeProvider>
             </BrowserRouter>
           )}
         </div>
@@ -119,5 +148,3 @@ function App() {
     }
   }
 }
-
-export default App;

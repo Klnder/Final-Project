@@ -26,6 +26,19 @@ export default function CreateTripForm({ getTrips }) {
       backgroundColor: indigo[700],
     },
   }));
+  const CssTextField = styled(TextField)({
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "white",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+      },
+    },
+  });
 
   //manipulate current date to put it as the minimum in the form
   const oneDay = 24 * 60 * 60 * 1000;
@@ -80,8 +93,7 @@ export default function CreateTripForm({ getTrips }) {
   return (
     <form onSubmit={postTrip}>
       <h3 className="titleForm">Create a new Trip</h3>
-      <TextField
-        required
+      <CssTextField
         fullWidth
         id="test"
         name="name"
@@ -91,10 +103,15 @@ export default function CreateTripForm({ getTrips }) {
         value={form.name}
         placeholder="An exciting name"
         margin="normal"
+        InputLabelProps={{
+          sx: {
+            color: "white",
+            borderColor: "white",
+          },
+        }}
       />
       <Stack direction="row" spacing={1}>
-        <TextField
-          required
+        <CssTextField
           id="from"
           name="from"
           label="From"
@@ -103,9 +120,13 @@ export default function CreateTripForm({ getTrips }) {
           value={form.from}
           placeholder="city departure"
           sx={{ width: 1 / 2 }}
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+          }}
         />
-        <TextField
-          required
+        <CssTextField
           id="destination"
           name="destination"
           label="Destination"
@@ -114,11 +135,14 @@ export default function CreateTripForm({ getTrips }) {
           value={form.destination}
           placeholder="city arrival"
           sx={{ width: 1 / 2 }}
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+          }}
         />
       </Stack>
-      <TextField
-        required
-        InputLabelProps={{ shrink: true }}
+      <CssTextField
         fullWidth
         type="date"
         id="startDate"
@@ -129,10 +153,14 @@ export default function CreateTripForm({ getTrips }) {
         onChange={handleChange}
         value={form.startDate}
         margin="normal"
+        InputLabelProps={{
+          sx: {
+            color: "white",
+          },
+          shrink: true,
+        }}
       />
-      <TextField
-        required
-        InputLabelProps={{ shrink: true }}
+      <CssTextField
         fullWidth
         type="date"
         id="endDate"
@@ -143,9 +171,14 @@ export default function CreateTripForm({ getTrips }) {
         onChange={handleChange}
         value={form.endDate}
         margin="normal"
+        InputLabelProps={{
+          sx: {
+            color: "white",
+          },
+          shrink: true,
+        }}
       />
-      <TextField
-        required
+      <CssTextField
         fullWidth
         id="transportNumber"
         name="transportNumber"
@@ -155,6 +188,11 @@ export default function CreateTripForm({ getTrips }) {
         value={form.transportNumber}
         placeholder="your flight number to track you"
         margin="normal"
+        InputLabelProps={{
+          sx: {
+            color: "white",
+          },
+        }}
       />
       <Stack direction="row" justifyContent="center" alignItems="center" sx={{ width: 1 }}>
         <ColorButton type="submit" variant="outlined" endIcon={<SendRoundedIcon />}>

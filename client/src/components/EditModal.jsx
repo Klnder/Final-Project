@@ -71,7 +71,6 @@ export default function EditModal({ trip, handleModal, getTrips }) {
       <form onSubmit={editTrip}>
         <h3 className="titleForm">Modify Trip : {form.name}</h3>
         <TextField
-          required
           fullWidth
           id="test"
           name="name"
@@ -81,10 +80,14 @@ export default function EditModal({ trip, handleModal, getTrips }) {
           value={form.name}
           placeholder="An exciting name"
           margin="normal"
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+          }}
         />
         <Stack direction="row" spacing={1}>
           <TextField
-            required
             id="from"
             name="from"
             label="From"
@@ -93,9 +96,13 @@ export default function EditModal({ trip, handleModal, getTrips }) {
             value={form.from}
             placeholder="city departure"
             sx={{ width: 1 / 2 }}
+            InputLabelProps={{
+              sx: {
+                color: "white",
+              },
+            }}
           />
           <TextField
-            required
             id="destination"
             name="destination"
             label="Destination"
@@ -104,11 +111,14 @@ export default function EditModal({ trip, handleModal, getTrips }) {
             value={form.destination}
             placeholder="city arrival"
             sx={{ width: 1 / 2 }}
+            InputLabelProps={{
+              sx: {
+                color: "white",
+              },
+            }}
           />
         </Stack>
         <TextField
-          required
-          InputLabelProps={{ shrink: true }}
           fullWidth
           type="date"
           id="startDate"
@@ -119,10 +129,14 @@ export default function EditModal({ trip, handleModal, getTrips }) {
           onChange={handleChange}
           value={form.startDate}
           margin="normal"
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+            shrink: true,
+          }}
         />
         <TextField
-          required
-          InputLabelProps={{ shrink: true }}
           fullWidth
           type="date"
           id="endDate"
@@ -133,9 +147,14 @@ export default function EditModal({ trip, handleModal, getTrips }) {
           onChange={handleChange}
           value={form.endDate}
           margin="normal"
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+            shrink: true,
+          }}
         />
         <TextField
-          required
           fullWidth
           id="transportNumber"
           name="transportNumber"
@@ -145,6 +164,11 @@ export default function EditModal({ trip, handleModal, getTrips }) {
           value={form.transportNumber}
           placeholder="your flight number to track you"
           margin="normal"
+          InputLabelProps={{
+            sx: {
+              color: "white",
+            },
+          }}
         />
         <Stack direction="row" justifyContent="center" spacing={1} alignItems="center" sx={{ width: 1 }}>
           <ColorButton variant="outlined" endIcon={<CancelRoundedIcon />} onClick={() => handleModal()}>
