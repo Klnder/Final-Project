@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./CreateTripForm.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
-import { Button } from "@mui/material";
+import { Button, TextField, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { indigo } from "@mui/material/colors";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
@@ -79,51 +79,88 @@ export default function CreateTripForm({ getTrips }) {
 
   return (
     <form onSubmit={postTrip}>
-      <fieldset>
-        <legend>Create a new Trip</legend>
-        <p>
-          <label htmlFor="name">Name :</label>
-          <input type="text" name="name" id="name" onChange={handleChange} value={form.name} placeholder="exciting name of your trip" />
-        </p>
-        <p>
-          <label htmlFor="from">From :</label>
-          <input type="text" name="from" id="from" onChange={handleChange} value={form.from} placeholder="city departure" />
-        </p>
-        <p>
-          <label htmlFor="destination">Destination :</label>
-          <input type="text" name="destination" id="tdestination" onChange={handleChange} value={form.destination} placeholder="city arrival" />
-        </p>
-        <p>
-          <label htmlFor="startDate">Start date :</label>
-          <input
-            type="date"
-            name="startDate"
-            id="startDate"
-            className="date-input"
-            min={formattedToday}
-            onChange={handleChange}
-            value={form.startDate}
-          />
-        </p>
-        <p>
-          <label htmlFor="endDate">End Date :</label>
-          <input type="date" name="endDate" id="endDate" className="date-input" min={form.startDate} onChange={handleChange} value={form.endDate} />
-        </p>
-        <p>
-          <label htmlFor="transportNumber">Flight number :</label>
-          <input
-            type="text"
-            name="transportNumber"
-            id="transportNumber"
-            onChange={handleChange}
-            value={form.transportNumber}
-            placeholder="your flight number to track you"
-          />
-        </p>
+      <h3 className="titleForm">Create a new Trip</h3>
+      <TextField
+        required
+        fullWidth
+        id="test"
+        name="name"
+        label="Name"
+        variant="outlined"
+        onChange={handleChange}
+        value={form.name}
+        placeholder="An exciting name"
+        margin="normal"
+      />
+      <Stack direction="row" spacing={1}>
+        <TextField
+          required
+          id="from"
+          name="from"
+          label="From"
+          variant="outlined"
+          onChange={handleChange}
+          value={form.from}
+          placeholder="city departure"
+          sx={{ width: 1 / 2 }}
+        />
+        <TextField
+          required
+          id="destination"
+          name="destination"
+          label="Destination"
+          variant="outlined"
+          onChange={handleChange}
+          value={form.destination}
+          placeholder="city arrival"
+          sx={{ width: 1 / 2 }}
+        />
+      </Stack>
+      <TextField
+        required
+        InputLabelProps={{ shrink: true }}
+        fullWidth
+        type="date"
+        id="startDate"
+        name="startDate"
+        label="start date"
+        variant="outlined"
+        //min={formattedToday}
+        onChange={handleChange}
+        value={form.startDate}
+        margin="normal"
+      />
+      <TextField
+        required
+        InputLabelProps={{ shrink: true }}
+        fullWidth
+        type="date"
+        id="endDate"
+        name="endDate"
+        label="end date"
+        variant="outlined"
+        //min={form.startDate}
+        onChange={handleChange}
+        value={form.endDate}
+        margin="normal"
+      />
+      <TextField
+        required
+        fullWidth
+        id="transportNumber"
+        name="transportNumber"
+        label="flight number"
+        variant="outlined"
+        onChange={handleChange}
+        value={form.transportNumber}
+        placeholder="your flight number to track you"
+        margin="normal"
+      />
+      <Stack direction="row" justifyContent="center" alignItems="center" sx={{ width: 1 }}>
         <ColorButton type="submit" variant="outlined" endIcon={<SendRoundedIcon />}>
           Submit
         </ColorButton>
-      </fieldset>
+      </Stack>
     </form>
   );
 }

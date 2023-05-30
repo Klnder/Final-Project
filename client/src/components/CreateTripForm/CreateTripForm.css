@@ -5,24 +5,13 @@ form {
   border-radius: 10px 10px 10px 10px;
   padding-bottom: 10px;
 }
-legend {
+.titleForm {
   text-align: center;
   margin-bottom: 5px;
 }
-p {
-  position: relative;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-input {
-  position: absolute;
-  right: 0;
-  width: 40%;
-}
 
-.date-input {
-  width: 40.5%;
-}
-label {
-  margin-bottom: 10px;
-}
+/* 
+.MuiInputBase-root.MuiOutlinedInput-root {
+  color: white;
+  background-color: blue;
+} */

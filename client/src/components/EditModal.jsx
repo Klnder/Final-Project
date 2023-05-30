@@ -1,6 +1,11 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useState } from "react";
+import { Button, TextField, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { indigo } from "@mui/material/colors";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 
 export default function EditModal({ trip, handleModal, getTrips }) {
   const { user } = useAuth0();
@@ -13,6 +18,13 @@ export default function EditModal({ trip, handleModal, getTrips }) {
     transportType: "Flight",
     transportNumber: trip.transport.number,
   });
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(indigo[500]),
+    backgroundColor: indigo[500],
+    "&:hover": {
+      backgroundColor: indigo[700],
+    },
+  }));
 
   //manipulate current date to put it as the minimum in the form
   const oneDay = 24 * 60 * 60 * 1000;
@@ -57,53 +69,91 @@ export default function EditModal({ trip, handleModal, getTrips }) {
   return (
     <div className="modal">
       <form onSubmit={editTrip}>
-        <fieldset>
-          <legend>Modify Trip: {trip.name}</legend>
-          <p>
-            <label htmlFor="name">Name :</label>
-            <input type="text" name="name" id="name" onChange={handleChange} value={form.name} placeholder="exciting name of your trip" />
-          </p>
-          <p>
-            <label htmlFor="from">From :</label>
-            <input type="text" name="from" id="from" onChange={handleChange} value={form.from} placeholder="city departure" />
-          </p>
-          <p>
-            <label htmlFor="destination">Destination :</label>
-            <input type="text" name="destination" id="tdestination" onChange={handleChange} value={form.destination} placeholder="city arrival" />
-          </p>
-          <p>
-            <label htmlFor="startDate">Start date :</label>
-            <input
-              type="date"
-              name="startDate"
-              id="startDate"
-              className="date-input"
-              min={formattedToday}
-              onChange={handleChange}
-              value={form.startDate}
-            />
-          </p>
-          <p>
-            <label htmlFor="endDate">End Date :</label>
-            <input type="date" name="endDate" id="endDate" className="date-input" min={form.startDate} onChange={handleChange} value={form.endDate} />
-          </p>
-          <p>
-            <label htmlFor="transportNumber">Flight number :</label>
-            <input
-              type="text"
-              name="transportNumber"
-              id="transportNumber"
-              onChange={handleChange}
-              value={form.transportNumber}
-              placeholder="your flight number to track you"
-            />
-          </p>
-          <p>
-            <button onClick={() => handleModal()}>cancel</button>
-            <input type="submit" />
-          </p>
-          <br />
-        </fieldset>
+        <h3 className="titleForm">Modify Trip : {form.name}</h3>
+        <TextField
+          required
+          fullWidth
+          id="test"
+          name="name"
+          label="Name"
+          variant="outlined"
+          onChange={handleChange}
+          value={form.name}
+          placeholder="An exciting name"
+          margin="normal"
+        />
+        <Stack direction="row" spacing={1}>
+          <TextField
+            required
+            id="from"
+            name="from"
+            label="From"
+            variant="outlined"
+            onChange={handleChange}
+            value={form.from}
+            placeholder="city departure"
+            sx={{ width: 1 / 2 }}
+          />
+          <TextField
+            required
+            id="destination"
+            name="destination"
+            label="Destination"
+            variant="outlined"
+            onChange={handleChange}
+            value={form.destination}
+            placeholder="city arrival"
+            sx={{ width: 1 / 2 }}
+          />
+        </Stack>
+        <TextField
+          required
+          InputLabelProps={{ shrink: true }}
+          fullWidth
+          type="date"
+          id="startDate"
+          name="startDate"
+          label="start date"
+          variant="outlined"
+          //min={formattedToday}
+          onChange={handleChange}
+          value={form.startDate}
+          margin="normal"
+        />
+        <TextField
+          required
+          InputLabelProps={{ shrink: true }}
+          fullWidth
+          type="date"
+          id="endDate"
+          name="endDate"
+          label="end date"
+          variant="outlined"
+          //min={form.startDate}
+          onChange={handleChange}
+          value={form.endDate}
+          margin="normal"
+        />
+        <TextField
+          required
+          fullWidth
+          id="transportNumber"
+          name="transportNumber"
+          label="flight number"
+          variant="outlined"
+          onChange={handleChange}
+          value={form.transportNumber}
+          placeholder="your flight number to track you"
+          margin="normal"
+        />
+        <Stack direction="row" justifyContent="center" spacing={1} alignItems="center" sx={{ width: 1 }}>
+          <ColorButton variant="outlined" endIcon={<CancelRoundedIcon />} onClick={() => handleModal()}>
+            Cancel
+          </ColorButton>
+          <ColorButton type="submit" variant="outlined" endIcon={<SendRoundedIcon />}>
+            Submit
+          </ColorButton>
+        </Stack>
       </form>
     </div>
   );
