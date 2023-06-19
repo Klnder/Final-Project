@@ -86,7 +86,6 @@ export default function App() {
     setHeightScreen(height);
     setWidthScreen(width);
   }
-  //window.addEventListener("resize", getWindowDimensions);
 
   if (!isAuthenticated) {
     if (widthScreen < 1100 || heightScreen < 750) {

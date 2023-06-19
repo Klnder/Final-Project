@@ -17,7 +17,10 @@
 .loginButton {
   text-transform: uppercase;
   font-weight: bold;
-  color: tomato;
+  color: white;
   padding: 10px;
-  background: linear-gradient(to right, #f8ff00 0%, #3ad59f 100%);
+  background-color: #3f51b5;
+}
+.loginButton:hover {
+  background-color: #303f9f;
 }
