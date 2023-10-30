@@ -13,7 +13,7 @@ same place, to be able to enjoy our trips without stress, and without having to 
 
 ## Website
 
-You can find the live client at this address:
+You can find the live client at this address: [Trip Planner](https://final-project-jeremy.netlify.app/)
 
 ## How to launch it ?
 
